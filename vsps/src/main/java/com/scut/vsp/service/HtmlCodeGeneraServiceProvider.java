@@ -69,8 +69,8 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
                 html = module.modifyHtml(html);
             }
             //add javascript code
-            Element scriptNode = new Element(Tag.valueOf("script"), "");
-            String javaScriptCode = scriptNode.html();
+
+            String javaScriptCode = "";
             javaScriptCode += "function myFunction()\n{\n";
             if (!variableModules.isEmpty()) {
                 for (variableModule module :
@@ -87,8 +87,8 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
             }
             javaScriptCode += "}";
             //put codes into html
+            Element scriptNode=html.getElementById("func");
             scriptNode.html(javaScriptCode);
-            html.head().appendChild(scriptNode);
             return html.html();
         } catch (Exception e) {
             e.printStackTrace();
