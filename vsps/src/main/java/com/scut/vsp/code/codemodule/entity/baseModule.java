@@ -1,5 +1,6 @@
 package com.scut.vsp.code.codemodule.entity;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -12,12 +13,10 @@ public class baseModule {
 
     private String id;
 
-    public baseModule() {
-    }
     public String generateJavascript() throws IOException {
         return "";
     }
     protected void init(Map<String, Object> jsonMap) {
-        this.id = (String) jsonMap.get("id");
+        this.id = StringEscapeUtils.unescapeHtml4((String) jsonMap.get("id"));
     }
 }
