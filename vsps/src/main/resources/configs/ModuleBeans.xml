@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="INPUT" class="com.scut.vsp.code.codemodule.entity.INPUT" scope="prototype"/>
+    <bean id="OUTPUT" class="com.scut.vsp.code.codemodule.entity.OUTPUT" scope="prototype"/>
+    <bean id="VARIABLE" class="com.scut.vsp.code.codemodule.entity.VARIABLE" scope="prototype"/>
+    <bean id="WHILE" class="com.scut.vsp.code.codemodule.entity.WHILE" scope="prototype"/>
+    <bean id="IF" class="com.scut.vsp.code.codemodule.entity.IF" scope="prototype"/>
+    <bean id="OPERATOR" class="com.scut.vsp.code.codemodule.entity.OPERATOR" scope="prototype"/>
+</beans>

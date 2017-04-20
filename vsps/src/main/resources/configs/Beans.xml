@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="codeGeneraService" class="com.scut.vsp.service.CodeGeneraService">
+        <property name="serviceProvider">
+            <bean id="htmlCodeGeneraServiceProvider" class="com.scut.vsp.service.HtmlCodeGeneraServiceProvider">
+                <property name="htmlTemplatePath"
+                          value="src/main/java/com/scut/vsp/code/codemodule/filetemplate/HtmlTemplate.html"/>
+                <property name="moduleBeansPath"
+                          value="classpath:configs/ModuleBeans.xml"/>
+            </bean>
+        </property>
+    </bean>
+</beans>

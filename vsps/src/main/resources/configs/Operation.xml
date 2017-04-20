@@ -1,0 +1,42 @@
+<operations>
+    <operation id="plus">
+        <operand>0</operand>
+        <symbol>+</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="subtract">
+        <operand>0</operand>
+        <symbol>-</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="times">
+        <operand>0</operand>
+        <symbol>*</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="divide">
+        <operand>0</operand>
+        <symbol>/</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="less">
+        <operand>0</operand>
+        <symbol>&lt;</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="great">
+        <operand>0</operand>
+        <symbol>&gt;</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="equal">
+        <operand>0</operand>
+        <symbol>=</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="equal">
+        <operand>0</operand>
+        <symbol>=</symbol>
+        <operand>1</operand>
+    </operation>
+</operations>
