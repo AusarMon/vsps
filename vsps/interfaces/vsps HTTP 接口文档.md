@@ -280,3 +280,24 @@ X-Authorization: Bearer {token}
 ```
 
 **Response**：
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>one</title>
+        <script>function myFunction() { var VARIABLE=5; var INPUT=document.getElementById(&quot;INPUT-1&quot;).value; var OUTPUT; null}</script>
+    </head>
+    <body>
+        <div class="form-control">
+            <label for="INPUT-1">a number input</label>
+            <br />
+            <input id="INPUT-1" type="text" />
+        </div>
+        <div>
+            <p>a number output</p>
+            <p id="OUTPUT-1" type="text"></p>
+        </div>
+    </body>
+</html>
+```

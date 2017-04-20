@@ -14,12 +14,22 @@ import java.util.List;
 @Mapper
 public interface ProgramMapper {
 
-    final String PROGRAM_TABLE = "program";
+    String PROGRAM_TABLE = "program";
 
     @Select("select * from " + PROGRAM_TABLE + " where username = #{username}")
+    @Results(
+            id = "program",
+            value = {
+                    @Result(column = "program_id", property = "programId"),
+                    @Result(column = "username", property = "username"),
+                    @Result(column = "name", property = "name"),
+                    @Result(column = "struct_info", property = "structInfo")
+            }
+    )
     Program findByUsername(@Param("username") String username);
 
     @Select("select * from " + PROGRAM_TABLE + " where program_id = #{id}")
+    @ResultMap(value = "program")
     Program findById(@Param("id") String id);
 
     @Select("select program_id, name from " + PROGRAM_TABLE + " where username = #{username}")

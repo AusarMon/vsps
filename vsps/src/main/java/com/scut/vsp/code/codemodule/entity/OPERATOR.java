@@ -61,8 +61,9 @@ public class OPERATOR extends procedureModule {
             if (assgin != null) {
                 javascriptCode += assgin + " = ";
             }
-            File operationXml = new File(System.getProperty("user.dir") + File.separator + "out" + File.separator
-                    + "production" + File.separator + "CodeGenera" + File.separator + "configs" + File.separator + "Operation.xml");
+//            File operationXml = new File(System.getProperty("user.dir") + File.separator + "out" + File.separator
+//                    + "production" + File.separator + "CodeGenera" + File.separator + "configs" + File.separator + "Operation.xml");
+            File operationXml = new File(this.getClass().getClassLoader().getResource("configs/Operation.xml").toURI());
             Document operationsNode = Jsoup.parse(operationXml, "UTF-8");
             Element operationNode = operationsNode.getElementById(getOp());
             assert (operationNode != null);
