@@ -8,6 +8,7 @@ import com.scut.vsp.model.Program;
 import com.scut.vsp.request.model.NewProgramRequest;
 import com.scut.vsp.response.model.Error;
 import com.scut.vsp.response.model.ProgramBasicInfo;
+import com.scut.vsp.service.CodeGeneraService;
 import com.scut.vsp.utils.PrincipalTransform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,10 @@ import java.util.UUID;
 @RequestMapping("/v1/program")
 public class ProgramController {
 
-    @Autowired ProgramMapper programMapper;
+    @Autowired
+    ProgramMapper programMapper;
+    @Autowired
+    CodeGeneraService codeGeneraService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     List<ProgramBasicInfo> findAllBasicInfo(Principal principal) {
@@ -38,14 +42,14 @@ public class ProgramController {
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-    Program getDetail(@PathVariable String id) throws ProgramNotFoundException {
+    ResponseEntity<Program> getDetail(@PathVariable String id) throws ProgramNotFoundException {
         Program program = programMapper.findById(id);
 
         if (program == null) {
             throw new ProgramNotFoundException(id);
         }
 
-        return program;
+        return new ResponseEntity<>(program, HttpStatus.OK);
     }
 
     @ExceptionHandler(ProgramNotFoundException.class)
@@ -74,4 +78,19 @@ public class ProgramController {
 
         return new ResponseEntity<>(program, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/gen/{id}", method = RequestMethod.GET)
+    ResponseEntity<String> genProgram(@PathVariable String id) throws NullPointerException {
+        String htmlString = codeGeneraService.generateCode(programMapper.findById(id).getStructInfo());
+
+        return new ResponseEntity<String>(htmlString, HttpStatus.OK);
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Error genProgramError(NullPointerException e) {
+        Error error = new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An error occured when generate program.");
+        return error;
+    }
+
 }

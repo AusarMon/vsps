@@ -29,12 +29,14 @@ import java.util.stream.Collectors;
 @RequestMapping("v1/auth/token")
 public class AuthController {
 
-    @Autowired JwtTokenFactory tokenFactory;
-    @Autowired JwtSettings jwtSettings;
+    @Autowired
+    JwtTokenFactory tokenFactory;
+    @Autowired
+    JwtSettings jwtSettings;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<Map<String, String>> refresh(@RequestBody Map<String, String> request)
-            throws Exception{
+            throws Exception {
         String token = request.get("refreshToken");
 
         if (token == null) {

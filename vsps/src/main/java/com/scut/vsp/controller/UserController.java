@@ -1,5 +1,6 @@
 package com.scut.vsp.controller;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.scut.vsp.config.security.model.UserContext;
 import com.scut.vsp.exception.WrongPasswordException;
 import com.scut.vsp.mapper.UserMapper;
@@ -22,19 +23,27 @@ import java.security.Principal;
 @RestController
 @RequestMapping("v1/user")
 public class UserController {
-    @Autowired private UserMapper userMapper;
-    @Autowired private UserService userService;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/reg", method = RequestMethod.PUT)
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<User> register(@RequestBody User user) throws MySQLIntegrityConstraintViolationException {
         userMapper.insert(user);
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
+    @ExceptionHandler(MySQLIntegrityConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Error userExisted() {
+        return new Error(HttpStatus.BAD_REQUEST.value(), "User existed");
+    }
+
     @RequestMapping(value = "/psw", method = RequestMethod.POST)
     public void modifyPsw(@RequestBody ModifyPswRequest request, Principal principal)
-            throws WrongPasswordException{
+            throws WrongPasswordException {
         UserContext userContext = PrincipalTransform.transform(principal);
         String username = userContext.getUsername();
         if (!userService.passwordMatch(username, request.getOldPassword())) {
