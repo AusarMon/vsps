@@ -60,8 +60,8 @@ public class IF extends procedureModule {
             if (true_condition != null) {
                 String true_condition_code = true_condition.generateJavascript();
                 true_condition_code = true_condition_code.substring(0, true_condition_code.length() - 2);
+                javaScriptCode += true_condition_code + ")\n{\n";
             }
-            javaScriptCode += true_condition + ")\n{\n";
             for (procedureModule module :
                     true_procedure) {
                 javaScriptCode += module.generateJavascript();

@@ -9,7 +9,7 @@
         <symbol>+</symbol>
         <operand>1</operand>
     </operation>
-    <operation id="subtract">
+    <operation id="minus">
         <operand>0</operand>
         <symbol>-</symbol>
         <operand>1</operand>
@@ -48,6 +48,12 @@
         <operand>0</operand>
         <symbol>==</symbol>
         <operand>1</operand>
+    </operation>
+    <operation id="index">
+        <operand>0</operand>
+        <symbol>[</symbol>
+        <operand>1</operand>
+        <symbol>]</symbol>
     </operation>
     <operation id="assign">
         <operand>0</operand>

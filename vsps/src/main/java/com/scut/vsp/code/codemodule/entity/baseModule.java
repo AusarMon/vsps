@@ -17,6 +17,8 @@ public class baseModule {
         return "";
     }
     protected void init(Map<String, Object> jsonMap) {
-        this.id = StringEscapeUtils.unescapeHtml4((String) jsonMap.get("id"));
+        //this.id = StringEscapeUtils.unescapeHtml4((String) jsonMap.get("id"));
+        System.out.println(jsonMap);
+        this.id = ((String) jsonMap.get("id"));
     }
 }

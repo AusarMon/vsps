@@ -38,6 +38,7 @@ public class VARIABLE extends variableModule {
         return html;
     }
 
+
     @Override
     public String generateJavascript() {
         String javaScriptCode = "";

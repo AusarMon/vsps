@@ -1,8 +1,7 @@
 package com.scut.vsp.service;
 
-import com.scut.vsp.code.codemodule.entity.Program;
-import com.scut.vsp.code.codemodule.entity.procedureModule;
-import com.scut.vsp.code.codemodule.entity.variableModule;
+import com.scut.vsp.code.codemodule.entity.*;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -44,7 +43,9 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
             Map<String, Object> jsonMap = mapper.readValue(jsonString, Map.class);
             ArrayList<Object> variableModules = (ArrayList<Object>) jsonMap.get("variableArea");
             ArrayList<Object> procedureModules = (ArrayList<Object>) jsonMap.get("procedureArea");
-            String name = (String) jsonMap.get("name");
+            String name="code";
+            if (jsonMap.get("name")!=null)
+                 name = (String) jsonMap.get("name");
             Program program = new Program(name);
             program.setContext(context);
             program.setVariableModules(variableModules);
@@ -58,16 +59,25 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
 
     @Override
     public String generateCode(String jsonString) {
-        try {
+       try {
             //modify html
+           System.out.println(jsonString);
             Document html = ReadHtmlTemplate();
             Program program = parseJSON(jsonString);
-            html.title(program.getName());
+            if (program.getName()!=null)
+                html.title(program.getName());
             ArrayList<variableModule> variableModules = (ArrayList<variableModule>) program.getVariableModules();
+           for (variableModule module :
+                   variableModules) {
+               if(module.getClass()== INPUT.class)
+                   html = module.modifyHtml(html);
+           }
             for (variableModule module :
                     variableModules) {
-                html = module.modifyHtml(html);
+                if(module.getClass()!= INPUT.class)
+                    html = module.modifyHtml(html);
             }
+
             //add javascript code
 
             String javaScriptCode = "";
@@ -75,7 +85,13 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
             if (!variableModules.isEmpty()) {
                 for (variableModule module :
                         variableModules) {
-                    javaScriptCode += module.generateJavascript();
+                    if(module.getClass()!= INPUT.class)
+                        javaScriptCode += module.generateJavascript();
+                }
+                for (variableModule module :
+                        variableModules) {
+                    if(module.getClass()== INPUT.class)
+                        javaScriptCode += module.generateJavascript();
                 }
             }
             ArrayList<procedureModule> procedureModules = (ArrayList<procedureModule>) program.getProcedureModules();
@@ -85,11 +101,29 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
                     javaScriptCode += module.generateJavascript();
                 }
             }
+           for (variableModule module :
+                   variableModules) {
+               if(module.getClass()== OUTPUT.class)
+                   javaScriptCode=module.appendToJavascript(javaScriptCode);
+           }
             javaScriptCode += "}";
             //put codes into html
-            Element scriptNode=html.getElementById("func");
-            scriptNode.html(javaScriptCode);
-            return html.html();
+
+            Element btn=new Element(Tag.valueOf("button"),"");
+            btn.attr("id","mybtn");
+            btn.text("运行");
+            html.body().appendChild(btn);
+
+           Element scriptNode=new Element(Tag.valueOf("script"),"");
+           scriptNode.attr("id","func");
+           scriptNode.text(javaScriptCode);
+           html.body().appendChild(scriptNode);
+
+           Element bindingNode=new Element(Tag.valueOf("script"),"");
+           bindingNode.text("var btn = document.getElementById(\"mybtn\");\n" +
+                   "    btn.addEventListener('click', myFunction);");
+           html.body().appendChild(bindingNode);
+            return  StringEscapeUtils.unescapeHtml4(StringEscapeUtils.unescapeHtml4(html.html())).replaceAll("\\\\","");
         } catch (Exception e) {
             e.printStackTrace();
             return "";

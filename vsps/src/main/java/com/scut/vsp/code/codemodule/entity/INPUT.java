@@ -43,6 +43,10 @@ public class INPUT extends variableModule {
 
     @Override
     public String generateJavascript() {
-        return "var "+this.getName()+"=document.getElementById(\""+this.getId()+"\").value;\n";
+        StringBuilder str=new StringBuilder("var "+this.getName()+"=document.getElementById(\""+this.getId()+"\").value;\n") ;
+        if (getDtype()==DataType.NumberType)
+            str.append(this.getName()+"=parseFloat("+getName()+");\n");
+        return str.toString();
+
     }
 }

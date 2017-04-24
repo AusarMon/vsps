@@ -3,7 +3,6 @@ package com.scut.vsp.code.codemodule.entity;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -39,6 +38,10 @@ public class OUTPUT extends variableModule {
         div.appendChild(input);
         html.body().appendChild(div);
         return html;
+    }
+    @Override
+    public String appendToJavascript(String s){
+        return s+"document.getElementById(\""+getId()+"\").innerHTML="+getName()+";";
     }
     @Override
     public String generateJavascript(){

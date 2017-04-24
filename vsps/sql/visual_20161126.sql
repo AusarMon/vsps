@@ -25,7 +25,7 @@ CREATE TABLE `program` (
   `program_id` varchar(256) NOT NULL,
   `username` varchar(64) DEFAULT NULL,
   `name` text NOT NULL,
-  `struct_info` text,
+  `struct_info` text, CHARACTER SET utf8
   PRIMARY KEY (`program_id`),
   KEY `username` (`username`),
   CONSTRAINT `program_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE

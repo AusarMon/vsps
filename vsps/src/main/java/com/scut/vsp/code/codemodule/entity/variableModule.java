@@ -22,7 +22,7 @@ public class variableModule extends baseModule {
 
     public variableModule() {
     }
-
+    public String appendToJavascript(String s){return s;}
     @Override
     protected void init(Map<String, Object> jsonMap) {
         super.init(jsonMap);
