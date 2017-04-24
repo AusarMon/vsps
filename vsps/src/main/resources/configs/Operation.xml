@@ -1,4 +1,9 @@
 <operations>
+    <operation id="mod">
+        <operand>0</operand>
+        <symbol>%</symbol>
+        <operand>1</operand>
+    </operation>
     <operation id="plus">
         <operand>0</operand>
         <symbol>+</symbol>
@@ -9,7 +14,7 @@
         <symbol>-</symbol>
         <operand>1</operand>
     </operation>
-    <operation id="times">
+    <operation id="multiply">
         <operand>0</operand>
         <symbol>*</symbol>
         <operand>1</operand>
@@ -21,20 +26,30 @@
     </operation>
     <operation id="less">
         <operand>0</operand>
-        <symbol>&lt;</symbol>
+        <symbol>\&lt;</symbol>
         <operand>1</operand>
     </operation>
-    <operation id="great">
+    <operation id="greater">
         <operand>0</operand>
-        <symbol>&gt;</symbol>
+        <symbol>\&gt;</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="le">
+        <operand>0</operand>
+        <symbol>\&lt;=</symbol>
+        <operand>1</operand>
+    </operation>
+    <operation id="ge">
+        <operand>0</operand>
+        <symbol>\&gt;=</symbol>
         <operand>1</operand>
     </operation>
     <operation id="equal">
         <operand>0</operand>
-        <symbol>=</symbol>
+        <symbol>==</symbol>
         <operand>1</operand>
     </operation>
-    <operation id="equal">
+    <operation id="assign">
         <operand>0</operand>
         <symbol>=</symbol>
         <operand>1</operand>
