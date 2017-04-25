@@ -1,5 +1,6 @@
 package com.scut.vsp.code.codemodule.entity;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
@@ -45,7 +46,20 @@ public class INPUT extends variableModule {
     public String generateJavascript() {
         StringBuilder str=new StringBuilder("var "+this.getName()+"=document.getElementById(\""+this.getId()+"\").value;\n") ;
         if (getDtype()==DataType.NumberType)
-            str.append(this.getName()+"=parseFloat("+getName()+");\n");
+            switch (getDtype()){
+                case NumberType:
+                    str.append(this.getName()+"=parseFloat("+getName()+");\n");
+                    break;
+                case ArrayType:
+                    str.append(this.getName()+"=parseArray("+getName()+");\n");
+                    break;
+                case BoolType:
+                    //TODO: fix this
+                    str.append(this.getName()+"=parseFloat("+getName()+");\n");
+                    break;
+            }
+
+
         return str.toString();
 
     }

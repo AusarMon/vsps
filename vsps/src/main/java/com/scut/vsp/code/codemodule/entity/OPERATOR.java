@@ -41,8 +41,8 @@ public class OPERATOR extends procedureModule {
     public void init(Map<String, Object> jsonMap) {
         super.init(jsonMap);
         this.op = (String) jsonMap.get("op");
-        if (jsonMap.containsKey("assign")) {
-            this.assgin = (String) jsonMap.get("assign");
+        if (jsonMap.containsKey("assignValue")) {
+            this.assgin = (String) jsonMap.get("assignValue");
         }
         if (jsonMap.containsKey("first")) {
             OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"));

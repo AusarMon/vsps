@@ -25,8 +25,8 @@ public class IF extends procedureModule {
     public void init(Map<String, Object> jsonMap) {
         super.init(jsonMap);
         this.true_condition = new OPERATOR();
-        true_condition.init((Map<String, Object>) jsonMap.get("true_condition"));
-        ArrayList<Object> true_procedure_list = (ArrayList<Object>) jsonMap.get("true_procedure");
+        true_condition.init((Map<String, Object>) jsonMap.get("condition"));
+        ArrayList<Object> true_procedure_list = (ArrayList<Object>) jsonMap.get("procedure");
         for (Object true_procedure_map :
                 true_procedure_list) {
             Map map = (HashMap) true_procedure_map;
