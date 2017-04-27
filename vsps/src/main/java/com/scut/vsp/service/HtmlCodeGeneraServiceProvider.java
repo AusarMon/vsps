@@ -130,6 +130,38 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
         }
     }
 
+    @Override
+    public String generateTestCode(String jsonString) throws IOException {
+        Program program = parseJSON(jsonString);
+        ArrayList<variableModule> variableModules = (ArrayList<variableModule>) program.getVariableModules();
+        ArrayList<procedureModule> procedureModules = (ArrayList<procedureModule>) program.getProcedureModules();
+        StringBuilder codeBuilder=new StringBuilder("");
+        codeBuilder.append("function testFunc(");
+        StringBuilder argument=new StringBuilder("");
+        for (variableModule module :
+                variableModules) {
+            if(module.getClass()== INPUT.class)
+                argument.append(module.getName());
+            if (!module.equals(variableModules.get(variableModules.size()-1)))
+                argument.append(",");
+        }
+        codeBuilder.append(argument);
+        codeBuilder.append(")\n{\n");
+        if (!procedureModules.isEmpty()) {
+            for (procedureModule module :
+                    procedureModules) {
+                codeBuilder.append(module.generateJavascript());
+            }
+        }
+        for (variableModule module :
+                variableModules) {
+            if (module.getClass() == OUTPUT.class)
+                codeBuilder.append("return " + module.getName() + ";\n");
+        }
+        codeBuilder.append("}");
+        return codeBuilder.toString();
+    }
+
     public void setModuleBeansPath(String moduleBeansPath) {
         this.moduleBeansPath = moduleBeansPath;
         this.context = new ClassPathXmlApplicationContext(moduleBeansPath);

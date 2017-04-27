@@ -12,7 +12,7 @@ public class variableModule extends baseModule {
 
     private DataType dtype;
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

@@ -16,6 +16,11 @@ public class CodeGeneraService {
             throw new NullPointerException("No CodeGeneraServiceProviderInterface");
         return serviceProvider.generateCode(jsonString);
     }
+    public String generateTestCode(String jsonString) throws NullPointerException {
+        if (serviceProvider == null)
+            throw new NullPointerException("No CodeGeneraServiceProviderInterface");
+        return serviceProvider.generateTestCode(jsonString);
+    }
 
     public void setServiceProvider(CodeGeneraServiceProviderInterface serviceProvider) {
         this.serviceProvider = serviceProvider;
