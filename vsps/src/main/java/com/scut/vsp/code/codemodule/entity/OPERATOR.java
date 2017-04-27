@@ -45,11 +45,11 @@ public class OPERATOR extends procedureModule {
             this.assgin = (String) jsonMap.get("assignValue");
         }
         if (jsonMap.containsKey("first")) {
-            OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"));
+            OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"),jsonMap.get("firstIndex"));
             Operands.add(first);
         }
         if (jsonMap.containsKey("second")) {
-            OperandInfo second = new OperandInfo((String) jsonMap.get("secondType"), null, (String) jsonMap.get("second"));
+            OperandInfo second = new OperandInfo((String) jsonMap.get("secondType"), null, (String) jsonMap.get("second"),jsonMap.get("secondIndex"));
             Operands.add(second);
         }
     }
@@ -76,7 +76,11 @@ public class OPERATOR extends procedureModule {
                             javascriptCode += Operands.get(index).getValue() + " ";
                             break;
                         case VAR:
-                            javascriptCode += Operands.get(index).getValue() + " ";
+                            if (Operands.get(index).getIndex().equals(""))
+                                javascriptCode += Operands.get(index).getValue() + " ";
+                            else{
+                                javascriptCode+=Operands.get(index).getValue()+"["+Operands.get(index).getIndex()+"] ";
+                            }
                             break;
                     }
                 } else if (node.tagName().equals("symbol")) {

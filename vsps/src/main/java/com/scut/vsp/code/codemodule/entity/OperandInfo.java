@@ -20,12 +20,26 @@ public class OperandInfo {
     private VarType varType;
     private DataType dataType;
     private String value;
+    private String index;
 
-    OperandInfo(String varType, String dataType, String value) {
+    OperandInfo(String varType, String dataType, String value,Object index) {
         if (dataType!=null)
             this.dataType = DataType.StringMap.get(dataType);
         if (varType!=null)
             this.varType = VarType.StringMap.get(varType);
         this.value = value;
+        if (index!=null)
+        {
+            this.index=(String)index;
+        }
+        else
+        {
+            this.index="";
+        }
+
+    }
+
+    public String getIndex() {
+        return index;
     }
 }
