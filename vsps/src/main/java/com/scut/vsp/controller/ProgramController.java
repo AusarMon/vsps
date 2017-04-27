@@ -8,6 +8,7 @@ import com.scut.vsp.model.Program;
 import com.scut.vsp.request.model.NewProgramRequest;
 import com.scut.vsp.response.model.Error;
 import com.scut.vsp.response.model.ProgramBasicInfo;
+import com.scut.vsp.response.model.Success;
 import com.scut.vsp.service.CodeGeneraService;
 import com.scut.vsp.utils.PrincipalTransform;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,7 @@ public class ProgramController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<Program> modifyName(@RequestBody Program program)
+    public ResponseEntity<Program> modify(@RequestBody Program program)
             throws FieldLackException {
         programMapper.update(program);
 
@@ -91,6 +92,16 @@ public class ProgramController {
     public Error genProgramError(NullPointerException e) {
         Error error = new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An error occured when generate program.");
         return error;
+    }
+
+    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Success> deleteProgram(@PathVariable String id) {
+        long delNum = programMapper.deleteByProgramId(id);
+        boolean flag = (delNum == 0? false : true);
+        HttpStatus status = (delNum == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
+        Success res = new Success(flag);
+
+        return new ResponseEntity<>(res, status);
     }
 
 }

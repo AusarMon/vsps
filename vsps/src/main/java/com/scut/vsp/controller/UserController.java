@@ -7,6 +7,7 @@ import com.scut.vsp.mapper.UserMapper;
 import com.scut.vsp.model.User;
 import com.scut.vsp.request.model.ModifyPswRequest;
 import com.scut.vsp.response.model.Error;
+import com.scut.vsp.response.model.Success;
 import com.scut.vsp.service.UserService;
 import com.scut.vsp.utils.PrincipalTransform;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/psw", method = RequestMethod.POST)
-    public void modifyPsw(@RequestBody ModifyPswRequest request, Principal principal)
+    public ResponseEntity<Success> modifyPsw(@RequestBody ModifyPswRequest request, Principal principal)
             throws WrongPasswordException {
         UserContext userContext = PrincipalTransform.transform(principal);
         String username = userContext.getUsername();
@@ -51,6 +52,7 @@ public class UserController {
         }
 
         userMapper.modifyPasswordByUsername(username, request.getNewPassword());
+        return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
     }
 
     @ExceptionHandler(WrongPasswordException.class)

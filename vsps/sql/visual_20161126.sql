@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : utf-8
 
- Date: 11/26/2016 00:35:57 AM
+ Date: 04/27/2017 10:16:27 AM
 */
 
 SET NAMES utf8;
@@ -25,7 +25,8 @@ CREATE TABLE `program` (
   `program_id` varchar(256) NOT NULL,
   `username` varchar(64) DEFAULT NULL,
   `name` text NOT NULL,
-  `struct_info` text, CHARACTER SET utf8
+  `struct_info` text CHARACTER SET utf8,
+  `description` text CHARACTER SET utf8,
   PRIMARY KEY (`program_id`),
   KEY `username` (`username`),
   CONSTRAINT `program_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -35,7 +36,7 @@ CREATE TABLE `program` (
 --  Records of `program`
 -- ----------------------------
 BEGIN;
-INSERT INTO `program` VALUES ('e2ef9c56-b0a8-4014-b167-6bbc82bede01', 'test', 'newName', 'newStruct'), ('p_id', 'test', 'test_p', '<test/>'), ('p_id1', 'test', 'new name', 'new struct');
+INSERT INTO `program` VALUES ('e2ef9c56-b0a8-4014-b167-6bbc82bede01', 'test', 'newName', 'newStruct', '无'), ('p_id', 'test', 'test_p', '<test/>', '无'), ('p_id1', 'test', 'new name', 'new struct', '无');
 COMMIT;
 
 -- ----------------------------

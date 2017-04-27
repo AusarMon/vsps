@@ -10,6 +10,7 @@ public class Program {
     private String username;
     private String name;
     private String structInfo;
+    private String description;
 
     public Program() {
     }
@@ -43,6 +44,14 @@ public class Program {
 
     public void setStructInfo(String structInfo) {
         this.structInfo = structInfo;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

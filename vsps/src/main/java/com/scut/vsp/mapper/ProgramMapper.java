@@ -23,7 +23,8 @@ public interface ProgramMapper {
                     @Result(column = "program_id", property = "programId"),
                     @Result(column = "username", property = "username"),
                     @Result(column = "name", property = "name"),
-                    @Result(column = "struct_info", property = "structInfo")
+                    @Result(column = "struct_info", property = "structInfo"),
+                    @Result(column = "description", property = "description")
             }
     )
     Program findByUsername(@Param("username") String username);
@@ -44,7 +45,7 @@ public interface ProgramMapper {
             + "(program_id, username, name, struct_info) values(#{programId}, #{username}, #{name}, #{structInfo})")
     Long insert(Program program);
 
-    @Update("update " + PROGRAM_TABLE + " set name = #{name}, struct_info = #{structInfo} where program_id = #{programId}")
+    @Update("update " + PROGRAM_TABLE + " set name = #{name}, struct_info = #{structInfo}, description = #{description} where program_id = #{programId}")
     Long update(Program program);
 
     @Delete("delete from " + PROGRAM_TABLE + " where program_id = #{id}")

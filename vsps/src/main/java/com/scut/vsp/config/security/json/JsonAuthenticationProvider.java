@@ -41,10 +41,8 @@ public class JsonAuthenticationProvider implements AuthenticationProvider {
         UserDetails user = userDetailsService.loadUserByUsername(username);
 
         if (user == null) {
-            new UsernameNotFoundException("User not found: " + username);
+            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }
-
-//        if (!encoder.matches(password, user.getPassword())) throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
 
         if (!user.getPassword().equals(password)) {
             throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");

@@ -263,8 +263,25 @@ X-Authorization: Bearer {token}
 }
 ```
 
+### 删除现有程序
 
+**URL**：`v1/del/{id}`
 
+**Method**：`DELETE`
+
+**Head**：
+
+```text
+X-Authorization: Bearer {token}
+```
+
+**Response**：
+
+```json
+{
+  "success": "true",
+}
+```
 
 
 ### 生成 HTML 代码
