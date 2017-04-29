@@ -39,9 +39,11 @@ import java.util.List;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String JWT_TOKEN_HEADER_PARAM = "X-Authorization";
 
+    // 以下路径要在 List<String> pathsToSkip = Arrays.asList 中添加，不然无法跳过验证
     public static final String FORM_BASED_LOGIN_ENTRY_POINT = "/v1/auth/login/";
     public static final String FORM_BASED_REGISTER_ENTRY_POINT = "/v1/user/reg/";
     public static final String TOKEN_REFRESH_ENTRY_POINT = "/v1/auth/token/";
+    public static final String GEN_PROGRAM_ENTRY_POINT = "/v1/program/gen/**";
 
     public static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/**";
 
@@ -78,7 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         List<String> pathsToSkip = Arrays.asList(
                 TOKEN_REFRESH_ENTRY_POINT,
                 FORM_BASED_LOGIN_ENTRY_POINT,
-                FORM_BASED_REGISTER_ENTRY_POINT);
+                FORM_BASED_REGISTER_ENTRY_POINT,
+                GEN_PROGRAM_ENTRY_POINT);
         SkipPathRequestMatcher matcher = new SkipPathRequestMatcher(pathsToSkip, TOKEN_BASED_AUTH_ENTRY_POINT);
         JwtTokenAuthenticationProcessingFilter filter
                 = new JwtTokenAuthenticationProcessingFilter(failureHandler, tokenExtractor, matcher);
@@ -117,10 +120,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, FORM_BASED_LOGIN_ENTRY_POINT).permitAll()
+                .antMatchers(GEN_PROGRAM_ENTRY_POINT).permitAll() // Generate program
                 .antMatchers(FORM_BASED_LOGIN_ENTRY_POINT).permitAll() // Login end-point
                 .antMatchers(FORM_BASED_REGISTER_ENTRY_POINT).permitAll() // User register
                 .antMatchers(TOKEN_REFRESH_ENTRY_POINT).permitAll() // Token refresh end-point
+
 
                 .and()
                 .authorizeRequests()
