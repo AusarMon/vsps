@@ -17,6 +17,7 @@ public class OPERATOR extends procedureModule {
     private String moduleType = "OPERATOR";
     private ArrayList<OperandInfo> Operands = new ArrayList<>();
     private String assgin;
+    private String assignIndex;
 
     public OPERATOR() {
     }
@@ -44,6 +45,9 @@ public class OPERATOR extends procedureModule {
         if (jsonMap.containsKey("assignValue")) {
             this.assgin = (String) jsonMap.get("assignValue");
         }
+        if (jsonMap.containsKey("assignIndex")) {
+            this.assignIndex = (String) jsonMap.get("assignIndex");
+        }
         if (jsonMap.containsKey("first")) {
             OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"),jsonMap.get("firstIndex"));
             Operands.add(first);
@@ -59,7 +63,11 @@ public class OPERATOR extends procedureModule {
         try {
             String javascriptCode = "";
             if (assgin != null) {
-                javascriptCode += assgin + " = ";
+                if (assignIndex!=null){
+                    javascriptCode += assgin+"["+assignIndex +"]"+ " = ";
+                }
+                else
+                    javascriptCode += assgin + " = ";
             }
 //            File operationXml = new File(System.getProperty("user.dir") + File.separator + "out" + File.separator
 //                    + "production" + File.separator + "CodeGenera" + File.separator + "configs" + File.separator + "Operation.xml");
