@@ -8,6 +8,7 @@ import com.google.common.base.MoreObjects;
 public class ProgramBasicInfo {
     private String programId;
     private String name;
+    private String description;
 
     public ProgramBasicInfo() {
     }
@@ -28,12 +29,21 @@ public class ProgramBasicInfo {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return MoreObjects
                 .toStringHelper(this.getClass())
                 .add("programId", programId)
                 .add("name", name)
+                .add("description", description)
                 .toString();
     }
 }

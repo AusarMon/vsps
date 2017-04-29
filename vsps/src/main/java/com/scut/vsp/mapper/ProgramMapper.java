@@ -33,11 +33,15 @@ public interface ProgramMapper {
     @ResultMap(value = "program")
     Program findById(@Param("id") String id);
 
-    @Select("select program_id, name from " + PROGRAM_TABLE + " where username = #{username}")
-    @Results(value = {
-            @Result(id = true, property = "programId", column = "program_id", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-            @Result(id = true, property = "name", column = "name", javaType = String.class, jdbcType = JdbcType.VARCHAR)
-    })
+    @Select("select program_id, name, description from " + PROGRAM_TABLE + " where username = #{username}")
+    @Results(
+            id = "programBasicInfo",
+            value = {
+                    @Result(column = "program_id", property = "programId"),
+                    @Result(column = "name", property = "name"),
+                    @Result(column = "description", property = "description")
+            }
+    )
     List<ProgramBasicInfo> findProgtamBasicInfoByUsername(@Param("username") String username);
 
     @Insert("insert into "
