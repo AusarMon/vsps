@@ -97,6 +97,7 @@ public class ProgramController {
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Success> deleteProgram(@PathVariable String id) {
         long delNum = programMapper.deleteByProgramId(id);
+        System.out.println(delNum);
         boolean flag = (delNum == 0? false : true);
         HttpStatus status = (delNum == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
         Success res = new Success(flag);
