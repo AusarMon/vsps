@@ -1,3 +1,11 @@
+<!DOCTYPE operations [
+        <!ELEMENT operations (operation)*>
+        <!ELEMENT operation (symbol|operand)*>
+        <!ATTLIST operation
+                id CDATA #REQUIRED>
+        <!ELEMENT symbol (#PCDATA)>
+        <!ELEMENT operand (#PCDATA)>
+        ]>
 <operations>
     <operation id="unary_plus">
         <symbol>+</symbol>
