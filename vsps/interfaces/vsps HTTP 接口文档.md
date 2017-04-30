@@ -1,6 +1,228 @@
 # vsps HTTP 接口文档
 
+## ProblemController
 
+**管理员身份**
+
+#### 添加新题目
+
+**URL**: `v1/problem`
+
+**Method**: `PUT`
+
+**RequestBody**
+
+```json
+{
+  "name": "problem1",
+  "desc": "add two numbers",
+  "inputs": [{
+    "name": "a",
+    "dtype": "number",
+    "desc": "input a"
+  }, {
+    "name": "b",
+    "dtype": "number",
+    "desc": "input b"
+  }],
+  "output": {
+    "name": "c",
+    "dtype": "number",
+    "desc": "output c"
+  },
+  "structInfo": "JSON String"
+}
+```
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "name": "problem1",
+  "desc": "add two numbers",
+  "inputs": [{
+    "name": "a",
+    "dtype": "number",
+    "desc": "input a"
+  }, {
+    "name": "b",
+    "dtype": "number",
+    "desc": "input b"
+  }],
+  "output": {
+    "name": "c",
+    "dtype": "number",
+    "desc": "output c"
+  },
+  "structInfo": "JSON String"
+}
+```
+
+#### 删除一个题目
+
+**URL**: `v1/problem/${id}`
+
+**Method**: `DELETE`
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "sucess": true
+}
+```
+
+#### 获取一个题目
+
+**URL**: `v1/problem/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "name": "add",
+  "desc": "add two numbers",
+  "inputs": [],
+  "output": {},
+  "structInfo": "JSON",
+  "state": 0
+}
+```
+
+#### 获取所有题目
+
+**URL**: `v1/problem/all`
+
+**Method**: `GET`
+
+**Response**
+
+0 为未发布
+
+1 为已发布
+
+```json
+[
+  {
+    "id": "1",
+    "name": "add",
+    "desc": "add two numbers",
+    "inputs": [],
+    "output": {},
+    "structInfo": "JSON",
+    "state": 0
+  },
+  {},
+  {}
+]
+```
+
+**用户身份**
+
+用户身份与管理员身份一些 URL 是相同的，但是返回不同的信息
+
+#### 获取一个题目
+
+state
+
+0 为未做题
+
+1 为进行中
+
+2 为已通过
+
+3 为未通过
+
+rate 为通过率
+
+**URL**: `v1/problem/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "name": "add",
+  "desc": "add two numbers",
+  "structInfo": "JSON",
+  "state": 2
+  "rate": 100
+}
+```
+
+#### 获取所有题目
+
+**URL**: `v1/problem/all`
+
+**Method**: `GET`
+
+**Response**
+
+```json
+[
+  {
+    "id": "1",
+    "name": "add",
+    "desc": "add two numbers",
+    "structInfo": "JSON",
+    "state": 2
+    "rate": 100
+  },
+  {},
+  {}
+]
+```
+
+#### 执行题目
+
+**URL**: `v1/problem/exec/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "rate": 100,
+  "state": 2
+}
+```
+
+#### 保存题目
+
+**URL**: `v1/problem/exec/${id}`
+
+**Method**: `POST`
+
+**RequestBody**:
+
+```json
+{
+  "id": "1",
+  "structInfo": "JSON"
+}
+```
+
+**Response**
+
+```json
+{
+  "id": "1",
+  "name": "add",
+  "desc": "add two numbers",
+  "structInfo": "JSON",
+  "state": 2,
+  "rate": 100
+}
+```
 
 ## UserController
 
