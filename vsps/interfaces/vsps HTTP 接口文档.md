@@ -152,7 +152,7 @@ rate 为通过率
   "name": "add",
   "desc": "add two numbers",
   "structInfo": "JSON",
-  "state": 2
+  "state": 2,
   "rate": 100
 }
 ```
