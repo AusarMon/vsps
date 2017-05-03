@@ -1,10 +1,8 @@
 package com.scut.vsp.code.codemodule.entity;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
