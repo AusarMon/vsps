@@ -44,6 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String FORM_BASED_REGISTER_ENTRY_POINT = "/v1/user/reg/";
     public static final String TOKEN_REFRESH_ENTRY_POINT = "/v1/auth/token/";
     public static final String GEN_PROGRAM_ENTRY_POINT = "/v1/program/gen/**";
+    public static final String HOME_ENTRY_POINT = "/";
+    public static final String INDEX_ENTRY_POINT = "/**/index**";
+    public static final String JS_ENTRY_POINT = "/**/app**";
 
     public static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/**";
 
@@ -81,7 +84,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 TOKEN_REFRESH_ENTRY_POINT,
                 FORM_BASED_LOGIN_ENTRY_POINT,
                 FORM_BASED_REGISTER_ENTRY_POINT,
-                GEN_PROGRAM_ENTRY_POINT);
+                GEN_PROGRAM_ENTRY_POINT,
+                HOME_ENTRY_POINT,
+                INDEX_ENTRY_POINT,
+                JS_ENTRY_POINT);
         SkipPathRequestMatcher matcher = new SkipPathRequestMatcher(pathsToSkip, TOKEN_BASED_AUTH_ENTRY_POINT);
         JwtTokenAuthenticationProcessingFilter filter
                 = new JwtTokenAuthenticationProcessingFilter(failureHandler, tokenExtractor, matcher);
@@ -124,6 +130,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(FORM_BASED_LOGIN_ENTRY_POINT).permitAll() // Login end-point
                 .antMatchers(FORM_BASED_REGISTER_ENTRY_POINT).permitAll() // User register
                 .antMatchers(TOKEN_REFRESH_ENTRY_POINT).permitAll() // Token refresh end-point
+                .antMatchers(HOME_ENTRY_POINT).permitAll()
+                .antMatchers(INDEX_ENTRY_POINT).permitAll()
+                .antMatchers(JS_ENTRY_POINT).permitAll()
 
 
                 .and()

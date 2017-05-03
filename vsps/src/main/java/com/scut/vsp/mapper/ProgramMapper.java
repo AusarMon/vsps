@@ -46,7 +46,7 @@ public interface ProgramMapper {
 
     @Insert("insert into "
             + PROGRAM_TABLE
-            + "(program_id, username, name, struct_info) values(#{programId}, #{username}, #{name}, #{structInfo})")
+            + "(program_id, username, name, struct_info, description) values(#{programId}, #{username}, #{name}, #{structInfo}, #{description})")
     Long insert(Program program);
 
     @Update("update " + PROGRAM_TABLE + " set name = #{name}, struct_info = #{structInfo}, description = #{description} where program_id = #{programId}")
