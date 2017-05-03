@@ -1,0 +1,34 @@
+%vp-base-module {
+  border-radius: 6px;
+  margin: 8px;
+}
+
+%vp-base-module-title {
+  color: #fff;
+  padding: 8px;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+%vp-base-module-body {
+  padding: 8px;
+}
+
+%vp-base-module-subtitle {
+  height: 24px;
+  line-height: 24px;
+  margin-right: 16px;
+  font-size: 14px;
+}
+
+%vp-base-module-item {
+  margin: 8px 0;
+  vertical-align: middle;
+}
+
+.vp-module__close {
+  color: #fff;
+  cursor: pointer;
+  float: right;
+}

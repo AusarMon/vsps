@@ -1,0 +1,29 @@
+@import "./base-module.scss";
+
+// yellow ecad2c f7cc46
+// green 85bc34 97d53c
+
+.vp-operator-module {
+  @extend %vp-base-module;
+  background-color: #2eabed;
+  width: 200px;
+
+  &__title {
+    @extend %vp-base-module-title;
+    background-color: #2197d7;
+  }
+
+  &__body {
+    @extend %vp-base-module-body;
+    text-align: center;
+  }
+
+  &__item {
+    @extend %vp-base-module-item;
+  }
+
+  &__name {
+    @extend %vp-base-module-subtitle;
+  }
+}
+

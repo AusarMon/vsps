@@ -1,0 +1,45 @@
+@import "./variables.scss";
+@import "./base-input.scss";
+
+.vp-choose-input {
+
+  @extend %vp-base-input;
+  color: $primary-font-color;
+  min-width: 64px;
+
+  &__items {
+    z-index: 999;
+    min-width: 94px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 6px;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    transition: all 0.25s;
+    &--hidden {
+      @extend .vp-choose-input__items;
+      width: 0;
+      height: 0;
+      display: none;
+    }
+  }
+
+  &__item {
+    line-height: 24px;
+    &:hover {
+      background-color: $primary-gary-color;
+    }
+  }
+
+  &__input-item {
+    line-height: 24px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    &:hover {
+      background-color: $primary-gary-color;
+    }
+  }
+}

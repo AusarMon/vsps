@@ -1,0 +1,24 @@
+@import "./base-module.scss";
+
+.vp-input-module {
+  @extend %vp-base-module;
+  background-color: #e94439;
+  width: 200px;
+
+  &__title {
+    @extend %vp-base-module-title;
+    background-color: #b31800;
+  }
+
+  &__body {
+    @extend %vp-base-module-body;
+  }
+
+  &__item {
+    margin: 8px 0;
+  }
+
+  &__name {
+    @extend %vp-base-module-subtitle;
+  }
+}

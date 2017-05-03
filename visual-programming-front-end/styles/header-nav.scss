@@ -1,0 +1,52 @@
+@import "./variables.scss";
+
+.vp-header-brand {
+  height: 58px;
+  line-height: 58px;
+  font-size: 24px;
+  font-weight: normal;
+  float: left;
+  padding: 0 16px;
+  color: $primary-color;
+  &__icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+}
+
+.vp-header-nav {
+  float: left;
+  font-size: 18px;
+  height: 58px;
+
+  &__item {
+    height: 58px;
+    line-height: 58px;
+    vertical-align: middle;
+    font-size: 18px;
+    float: left;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: $primary-font-color;
+    text-decoration: none;
+  }
+
+  &__item:hover {
+    cursor: pointer;
+    background-color: lighten($primary-color, 40%);
+    color: $primary-color;
+    border-bottom: 2px solid $primary-color;
+  }
+
+  &__item--active {
+    cursor: pointer;
+    background-color: lighten($primary-color, 40%);
+    color: $primary-color;
+    border-bottom: 2px solid $primary-color;
+  }
+
+  &__icon {
+    font-size: 18px;
+    padding-right: 8px;
+  }
+}

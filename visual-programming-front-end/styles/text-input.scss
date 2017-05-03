@@ -1,0 +1,37 @@
+@import "./base-input.scss";
+@import "./variables.scss";
+
+.vp-text-input {
+  @extend %vp-base-input;
+  min-width: 64px;
+
+  &__input-wrapper {
+    overflow: hidden;
+    border-radius: 6px;
+    position: absolute;
+    background-color: #fff;
+    min-width: 94px;
+    top: 0;
+    left: 0;
+    box-shadow: $base-box-shadow;
+
+    input {
+      border: none;
+      -webkit-appearance: none;
+      padding: 8px;
+      outline: none;
+    }
+
+    &--hidden {
+      @extend .vp-text-input__input-wrapper;
+      display: none;
+    }
+  }
+}
+
+.vp-index-input {
+  @extend %vp-base-input;
+  color: $primary-font-color;
+  width: 32px;
+  margin-left: 8px;
+}

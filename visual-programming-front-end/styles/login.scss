@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+.vp-login {
+  width: 400px;
+  border: 1px solid $border-gary-color;
+  border-radius: 8px;
+  padding: 16px 32px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: $base-box-shadow;
+}

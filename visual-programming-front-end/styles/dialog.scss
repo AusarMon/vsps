@@ -1,0 +1,24 @@
+@import "./variables.scss";
+
+.vp-dialog {
+  width: 600px;
+  background-color: #fff;
+  box-shadow: $base-box-shadow;
+  padding: 16px;
+  margin: 100px auto;
+  border-radius: 6px;
+
+  &__top {
+    padding-bottom: 16px;
+    overflow: hidden;
+  }
+
+  &__close {
+    color: $primary-font-color;
+    cursor: pointer;
+    float: right;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import "./variables.scss";
+@import "./base-input.scss";
+
+// TODO: 这不应该叫做 input 而是专门用来给取操作数用的 input
+.vp-input {
+  @extend %vp-base-input;
+  color: $primary-font-color;
+  width: 32px;
+}
