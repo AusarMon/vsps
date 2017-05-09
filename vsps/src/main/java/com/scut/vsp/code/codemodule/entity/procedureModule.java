@@ -14,7 +14,7 @@ public class procedureModule extends baseModule {
     }
 
     @Override
-    protected void init(Map<String, Object> jsonMap) {
+    protected void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
     }
 

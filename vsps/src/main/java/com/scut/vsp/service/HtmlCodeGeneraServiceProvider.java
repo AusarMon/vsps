@@ -137,15 +137,15 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
         ArrayList<procedureModule> procedureModules = (ArrayList<procedureModule>) program.getProcedureModules();
         StringBuilder codeBuilder=new StringBuilder("");
         codeBuilder.append("function testFunc(");
-        StringBuilder argument=new StringBuilder("");
-        for (variableModule module :
-                variableModules) {
-            if(module.getClass()== INPUT.class)
-                argument.append(module.getName());
-            if (!module.equals(variableModules.get(variableModules.size()-1)))
-                argument.append(",");
-        }
-        codeBuilder.append(argument);
+//        StringBuilder argument=new StringBuilder("");
+//        for (variableModule module :
+//                variableModules) {
+//            if(module.getClass()== INPUT.class)
+//                argument.append(module.getName());
+//            if (!module.equals(variableModules.get(variableModules.size()-1)))
+//                argument.append(",");
+//        }
+//        codeBuilder.append(argument);
         codeBuilder.append(")\n{\n");
         if (!procedureModules.isEmpty()) {
             for (procedureModule module :

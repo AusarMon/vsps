@@ -41,7 +41,7 @@ public class Program {
         return procedureModules;
     }
 
-    public void setProcedureModules(List<Object> procedureModules) {
+    public void setProcedureModules(List<Object> procedureModules) throws Exception {
         for (Object object : procedureModules) {
             Map map = (HashMap) object;
             String moduleTypeStr = (String) map.get("moduleType");

@@ -1,5 +1,6 @@
 package com.scut.vsp.code.codemodule.entity;
 
+import com.scut.vsp.exception.ProgramInvalidException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -39,22 +40,27 @@ public class OPERATOR extends procedureModule {
     }
 
     @Override
-    public void init(Map<String, Object> jsonMap) {
-        super.init(jsonMap);
-        this.op = (String) jsonMap.get("op");
-        if (jsonMap.containsKey("assignValue")) {
-            this.assgin = (String) jsonMap.get("assignValue");
+    public void init(Map<String, Object> jsonMap) throws ProgramInvalidException {
+        try {
+            super.init(jsonMap);
+            this.op = (String) jsonMap.get("op");
+            if (jsonMap.containsKey("assignValue")) {
+                this.assgin = (String) jsonMap.get("assignValue");
+            }
+            if (jsonMap.containsKey("assignIndex")) {
+                this.assignIndex = (String) jsonMap.get("assignIndex");
+            }
+            if (jsonMap.containsKey("first")) {
+                OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"), jsonMap.get("firstIndex"));
+                Operands.add(first);
+            }
+            if (jsonMap.containsKey("second")) {
+                OperandInfo second = new OperandInfo((String) jsonMap.get("secondType"), null, (String) jsonMap.get("second"), jsonMap.get("secondIndex"));
+                Operands.add(second);
+            }
         }
-        if (jsonMap.containsKey("assignIndex")) {
-            this.assignIndex = (String) jsonMap.get("assignIndex");
-        }
-        if (jsonMap.containsKey("first")) {
-            OperandInfo first = new OperandInfo((String) jsonMap.get("firstType"), null, (String) jsonMap.get("first"),jsonMap.get("firstIndex"));
-            Operands.add(first);
-        }
-        if (jsonMap.containsKey("second")) {
-            OperandInfo second = new OperandInfo((String) jsonMap.get("secondType"), null, (String) jsonMap.get("second"),jsonMap.get("secondIndex"));
-            Operands.add(second);
+        catch (Exception e){
+            throw new ProgramInvalidException("Something in your code maybe wrong");
         }
     }
 

@@ -16,7 +16,7 @@ public class baseModule {
     public String generateJavascript() throws IOException {
         return "";
     }
-    protected void init(Map<String, Object> jsonMap) {
+    protected void init(Map<String, Object> jsonMap) throws Exception {
         //this.id = StringEscapeUtils.unescapeHtml4((String) jsonMap.get("id"));
         System.out.println(jsonMap);
         this.id = ((String) jsonMap.get("id"));
