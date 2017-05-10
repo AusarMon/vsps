@@ -2,7 +2,7 @@
 
 ## ProblemController
 
-**管理员身份**
+**添加新题目，修改题目以及删除题目需要管理员身份**
 
 #### 添加新题目
 
@@ -30,6 +30,19 @@
     "dtype": "number",
     "desc": "output c"
   },
+  "testCases": [{
+  		"inputs": {
+  			"a": 1,
+  			"b": "2"
+  		},
+  		"exepct": "2"
+  	
+  },{
+  	"inputs": {
+  		"a": 1,
+  		"b": "2"
+  	},
+  	"exepct": "2"}],
   "structInfo": "JSON String"
 }
 ```
@@ -38,18 +51,22 @@
 
 ```json
 {
-  "id": "1",
+  "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
   "name": "problem1",
   "desc": "add two numbers",
-  "inputs": [{
-    "name": "a",
-    "dtype": "number",
-    "desc": "input a"
-  }, {
-    "name": "b",
-    "dtype": "number",
-    "desc": "input b"
-  }],
+  "state": 1,
+  "inpus": [
+    {
+      "name": "a",
+      "dtype": "number",
+      "desc": "input a"
+    },
+    {
+      "name": "b",
+      "dtype": "number",
+      "desc": "input b"
+    }
+  ],
   "output": {
     "name": "c",
     "dtype": "number",
@@ -69,7 +86,6 @@
 
 ```json
 {
-  "id": "1",
   "sucess": true
 }
 ```
@@ -84,13 +100,28 @@
 
 ```json
 {
-  "id": "1",
-  "name": "add",
-  "desc": "add two numbers",
-  "inputs": [],
-  "output": {},
-  "structInfo": "JSON",
-  "state": 0
+  "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "name": "p1",
+  "desc": "d",
+  "state": 2,
+  "inpus": [
+    {
+      "name": "a",
+      "dtype": "number",
+      "desc": "input a"
+    },
+    {
+      "name": "b",
+      "dtype": "number",
+      "desc": "input b"
+    }
+  ],
+  "output": {
+    "name": "c",
+    "dtype": "number",
+    "desc": "output c"
+  },
+  "structInfo": "JSON String"
 }
 ```
 
@@ -109,80 +140,111 @@
 ```json
 [
   {
-    "id": "1",
-    "name": "add",
+    "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
+    "name": "problem1",
     "desc": "add two numbers",
-    "inputs": [],
-    "output": {},
-    "structInfo": "JSON",
-    "state": 0
+    "state": 1,
+    "inpus": [
+      {
+        "name": "a",
+        "dtype": "number",
+        "desc": "input a"
+      },
+      {
+        "name": "b",
+        "dtype": "number",
+        "desc": "input b"
+      }
+    ],
+    "output": {
+      "name": "c",
+      "dtype": "number",
+      "desc": "output c"
+    },
+    "structInfo": "JSON String"
   },
-  {},
-  {}
-]
-```
-
-**用户身份**
-
-用户身份与管理员身份一些 URL 是相同的，但是返回不同的信息
-
-#### 获取一个题目
-
-state
-
-0 为未做题
-
-1 为进行中
-
-2 为已通过
-
-3 为未通过
-
-rate 为通过率
-
-**URL**: `v1/problem/${id}`
-
-**Method**: `GET`
-
-**Response**
-
-```json
-{
-  "id": "1",
-  "name": "add",
-  "desc": "add two numbers",
-  "structInfo": "JSON",
-  "state": 2,
-  "rate": 100
-}
-```
-
-#### 获取所有题目
-
-**URL**: `v1/problem/all`
-
-**Method**: `GET`
-
-**Response**
-
-```json
-[
   {
-    "id": "1",
-    "name": "add",
+    "id": "8950ea30-91e9-4421-9b38-48268d30680b",
+    "name": "problem1",
     "desc": "add two numbers",
-    "structInfo": "JSON",
-    "state": 2,
-    "rate": 100
+    "state": 1,
+    "inpus": [
+      {
+        "name": "a",
+        "dtype": "number",
+        "desc": "input a"
+      },
+      {
+        "name": "b",
+        "dtype": "number",
+        "desc": "input b"
+      }
+    ],
+    "output": {
+      "name": "c",
+      "dtype": "number",
+      "desc": "output c"
+    },
+    "structInfo": "JSON String"
   },
-  {},
-  {}
+  {
+    "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+    "name": "p1",
+    "desc": "d",
+    "state": 2,
+    "inpus": [
+      {
+        "name": "a",
+        "dtype": "number",
+        "desc": "input a"
+      },
+      {
+        "name": "b",
+        "dtype": "number",
+        "desc": "input b"
+      }
+    ],
+    "output": {
+      "name": "c",
+      "dtype": "number",
+      "desc": "output c"
+    },
+    "structInfo": "JSON String"
+  },
+  {
+    "id": "f7683537-c8a4-4c66-9f97-396d7ca8e8af",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "state": 1,
+    "inpus": [
+      {
+        "name": "a",
+        "dtype": "number",
+        "desc": "input a"
+      },
+      {
+        "name": "b",
+        "dtype": "number",
+        "desc": "input b"
+      }
+    ],
+    "output": {
+      "name": "c",
+      "dtype": "number",
+      "desc": "output c"
+    },
+    "structInfo": "JSON String"
+  }
 ]
 ```
+
+
+
+## SolutionController
 
 #### 执行题目
 
-**URL**: `v1/problem/exec/${id}`
+**URL**: `v1/sol/eval/${id}`
 
 **Method**: `GET`
 
@@ -190,15 +252,15 @@ rate 为通过率
 
 ```json
 {
-  "id": "1",
-  "rate": 100,
-  "state": 2
+  "passRate": 100,
+  "state": 2,
+  "err": ""
 }
 ```
 
 #### 保存题目
 
-**URL**: `v1/problem/exec/${id}`
+**URL**: `v1/sol`
 
 **Method**: `POST`
 
@@ -206,8 +268,8 @@ rate 为通过率
 
 ```json
 {
-  "id": "1",
-  "structInfo": "JSON"
+	"id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+	"structInfo": "JSON String"
 }
 ```
 
@@ -215,14 +277,15 @@ rate 为通过率
 
 ```json
 {
-  "id": "1",
-  "name": "add",
-  "desc": "add two numbers",
-  "structInfo": "JSON",
-  "state": 2,
-  "rate": 100
+  "problemId": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "userId": "test",
+  "state": 0,
+  "passRate": 0,
+  "structInfo": "JSON String"
 }
 ```
+
+
 
 ## UserController
 
@@ -529,9 +592,9 @@ X-Authorization: Bearer {token}
     </head>
     <body>
         <div class="form-control">
-            <label for="INPUT-1">a number input</label>
+            <label for="INPUT-1">a number inputs</label>
             <br />
-            <input id="INPUT-1" type="text" />
+            <inputs id="INPUT-1" type="text" />
         </div>
         <div>
             <p>a number output</p>

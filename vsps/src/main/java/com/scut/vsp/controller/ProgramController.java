@@ -2,7 +2,7 @@ package com.scut.vsp.controller;
 
 import com.scut.vsp.config.security.model.UserContext;
 import com.scut.vsp.exception.FieldLackException;
-import com.scut.vsp.exception.ProgramNotFoundException;
+import com.scut.vsp.exception.ItemNotFoundException;
 import com.scut.vsp.mapper.ProgramMapper;
 import com.scut.vsp.model.Program;
 import com.scut.vsp.request.model.NewProgramRequest;
@@ -43,19 +43,19 @@ public class ProgramController {
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-    ResponseEntity<Program> getDetail(@PathVariable String id) throws ProgramNotFoundException {
+    ResponseEntity<Program> getDetail(@PathVariable String id) throws ItemNotFoundException {
         Program program = programMapper.findById(id);
 
         if (program == null) {
-            throw new ProgramNotFoundException(id);
+            throw new ItemNotFoundException(id);
         }
 
         return new ResponseEntity<>(program, HttpStatus.OK);
     }
 
-    @ExceptionHandler(ProgramNotFoundException.class)
+    @ExceptionHandler(ItemNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Error programNotFound(ProgramNotFoundException e) {
+    public Error programNotFound(ItemNotFoundException e) {
         String programId = e.getId();
         Error error = new Error(HttpStatus.NOT_FOUND.value(), "Program [" + programId + "] not found");
         return error;
@@ -97,7 +97,6 @@ public class ProgramController {
     @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Success> deleteProgram(@PathVariable String id) {
         long delNum = programMapper.deleteByProgramId(id);
-        System.out.println(delNum);
         boolean flag = (delNum == 0? false : true);
         HttpStatus status = (delNum == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
         Success res = new Success(flag);

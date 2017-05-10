@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 @Mapper
 public interface UserMapper {
 
-    final String USER_TABLE = "user";
+    String USER_TABLE = "user";
 
     @Select("select * from " + USER_TABLE + " where username = #{username}")
     User findUserByUsername(@Param("username") String username);
 
     @Insert("insert into " + USER_TABLE
-            + "(username, password, email) values(#{username}, #{password}, #{email})")
+            + "(username, password, email, role) values(#{username}, #{password}, #{email}, ROLE_USER)")
     long insert(User user);
 
     @Delete("delete from " + USER_TABLE + " where username = #{username}")

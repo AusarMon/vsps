@@ -25,7 +25,7 @@ CREATE TABLE `problem` (
   `id` varchar(256) NOT NULL,
   `name` text CHARACTER SET utf8,
   `description` text CHARACTER SET utf32,
-  `input` text CHARACTER SET utf8,
+  `inputs` text CHARACTER SET utf8,
   `output` text CHARACTER SET utf8,
   `state` tinyint(4) DEFAULT NULL,
   `struct_info` text CHARACTER SET utf8,

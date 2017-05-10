@@ -24,13 +24,13 @@ public class UserMapperTest {
     @Test
     public void testFindUser() {
         User user = userMapper.findUserByUsername("test");
-        User expect = new User("test", "test", "test");
+        User expect = new User("test", "test", "test", "user");
         assertEquals(expect, user);
     }
 
     @Test
     public void testInsert() {
-        User newUser = new User("test1", "test1", "test1");
+        User newUser = new User("test1", "test1", "test1", "user");
         userMapper.insert(newUser);
         User user = userMapper.findUserByUsername(newUser.getUsername());
         assertEquals(newUser, user);
