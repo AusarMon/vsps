@@ -21,7 +21,7 @@ public class OUTPUT extends variableModule {
     }
 
     @Override
-    public void init(Map<String, Object> jsonMap) {
+    public void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         this.desc = (String) jsonMap.get("desc");
     }

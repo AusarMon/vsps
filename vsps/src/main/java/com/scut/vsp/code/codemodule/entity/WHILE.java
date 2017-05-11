@@ -19,7 +19,7 @@ public class WHILE extends procedureModule {
     }
 
     @Override
-    public void init(Map<String, Object> jsonMap) {
+    public void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         condition=new OPERATOR();
         condition.init((Map<String, Object>) jsonMap.get("condition"));

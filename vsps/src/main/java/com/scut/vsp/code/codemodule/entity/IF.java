@@ -1,5 +1,6 @@
 package com.scut.vsp.code.codemodule.entity;
 
+import com.scut.vsp.exception.ProgramInvalidException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class IF extends procedureModule {
     }
 
     @Override
-    public void init(Map<String, Object> jsonMap) {
+    public void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         this.true_condition = new OPERATOR();
         true_condition.init((Map<String, Object>) jsonMap.get("condition"));

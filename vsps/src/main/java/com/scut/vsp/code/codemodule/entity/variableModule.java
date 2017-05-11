@@ -24,7 +24,7 @@ public class variableModule extends baseModule {
     }
     public String appendToJavascript(String s){return s;}
     @Override
-    protected void init(Map<String, Object> jsonMap) {
+    protected void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         this.name = (String) jsonMap.get("name");
         this.dtype = DataType.StringMap.get(jsonMap.get("dtype"));

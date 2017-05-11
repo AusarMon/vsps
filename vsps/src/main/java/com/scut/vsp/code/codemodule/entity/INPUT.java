@@ -18,7 +18,7 @@ public class INPUT extends variableModule {
     }
     public INPUT(){}
     @Override
-    public void init(Map<String, Object> jsonMap){
+    public void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         this.desc= (String) jsonMap.get("desc");
     }

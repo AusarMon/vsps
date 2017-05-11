@@ -27,7 +27,7 @@ public class VARIABLE extends variableModule {
     }
 
     @Override
-    public void init(Map<String, Object> jsonMap) {
+    public void init(Map<String, Object> jsonMap) throws Exception {
         super.init(jsonMap);
         this.value = (String) jsonMap.get("value");
         this.varType = VarType.StringMap.get(jsonMap.get("initType"));

@@ -27,7 +27,7 @@ public class Program {
         return variableModules;
     }
 
-    public void setVariableModules(List<Object> variableModules) {
+    public void setVariableModules(List<Object> variableModules) throws Exception {
         for (Object object : variableModules) {
             Map map = (HashMap) object;
             String moduleTypeStr = (String) map.get("moduleType");
