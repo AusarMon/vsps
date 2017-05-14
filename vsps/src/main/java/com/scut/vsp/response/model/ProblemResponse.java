@@ -3,6 +3,7 @@ package com.scut.vsp.response.model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import com.scut.vsp.code.evaluation.model.TestCase;
 import com.scut.vsp.model.IOItem;
 import com.scut.vsp.model.Problem;
 
@@ -17,6 +18,8 @@ public class ProblemResponse {
     IOItem[] inpus;
     IOItem output;
     String structInfo;
+    TestCase[] testCases;
+
 
     @Expose(serialize = false)
     private static Gson gson;
@@ -34,6 +37,7 @@ public class ProblemResponse {
         this.structInfo = problem.getStructInfo();
         this.inpus = gson.fromJson(problem.getInput(), IOItem[].class);
         this.output = gson.fromJson(problem.getOutput(), IOItem.class);
+        this.testCases = gson.fromJson(problem.getTestCases(), TestCase[].class);
     }
 
     public String getId() {
@@ -90,5 +94,13 @@ public class ProblemResponse {
 
     public void setStructInfo(String structInfo) {
         this.structInfo = structInfo;
+    }
+
+    public TestCase[] getTestCases() {
+        return testCases;
+    }
+
+    public void setTestCases(TestCase[] testCases) {
+        this.testCases = testCases;
     }
 }

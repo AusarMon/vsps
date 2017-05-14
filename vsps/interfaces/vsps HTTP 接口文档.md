@@ -51,9 +51,9 @@
 
 ```json
 {
-  "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
-  "name": "problem1",
-  "desc": "add two numbers",
+  "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "name": "p1",
+  "desc": "d",
   "state": 1,
   "inpus": [
     {
@@ -72,7 +72,23 @@
     "dtype": "number",
     "desc": "output c"
   },
-  "structInfo": "JSON String"
+  "structInfo": "JSON String",
+  "testCases": [
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    },
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    }
+  ]
 }
 ```
 
@@ -90,11 +106,37 @@
 }
 ```
 
-#### 获取一个题目
+### 修改一个题目
 
-**URL**: `v1/problem/${id}`
+**URL**: `v1/problem`
 
-**Method**: `GET`
+**Method**: `POST`
+
+**RequestBody**
+
+```json
+{
+  "name": "problem1",
+  "desc": "add two numbers",
+  "state": 2,
+  "testCases": [
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    },
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    }
+  ]
+}
+```
 
 **Response**
 
@@ -103,7 +145,7 @@
   "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
   "name": "p1",
   "desc": "d",
-  "state": 2,
+  "state": 1,
   "inpus": [
     {
       "name": "a",
@@ -121,13 +163,97 @@
     "dtype": "number",
     "desc": "output c"
   },
-  "structInfo": "JSON String"
+  "structInfo": "JSON String",
+  "testCases": [
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    },
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    }
+  ]
 }
 ```
 
-#### 获取所有题目
+#### 删除一个题目
+
+#### 获取一个题目（用户）
+
+**URL**: `v1/problem/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+0 为未做题 
+1 为进行中 
+2 为已通过
+3 为未通过
+
+```json
+{
+  "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "name": "p1",
+  "desc": "d",
+  "structInfo": "JSON String",
+  "state": 0,
+  "rate": 0
+}
+```
+
+#### 获取所有已发布的题目（用户）
 
 **URL**: `v1/problem/all`
+
+**Method**: `GET`
+
+**Response**
+
+0 为未做题 
+1 为进行中 
+2 为已通过
+3 为未通过
+
+```json
+[
+  {
+    "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "structInfo": null,
+    "state": 0,
+    "rate": 0
+  },
+  {
+    "id": "8950ea30-91e9-4421-9b38-48268d30680b",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "structInfo": null,
+    "state": 0,
+    "rate": 0
+  },
+  {
+    "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+    "name": "p1",
+    "desc": "d",
+    "structInfo": "JSON String",
+    "state": 0,
+    "rate": 0
+  }
+]
+```
+
+#### 获取所有已发布的题目（管理员）
+
+**URL**: `v1/problem/admin/all`
 
 **Method**: `GET`
 
@@ -161,7 +287,23 @@
       "dtype": "number",
       "desc": "output c"
     },
-    "structInfo": "JSON String"
+    "structInfo": "JSON String",
+    "testCases": [
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      },
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      }
+    ]
   },
   {
     "id": "8950ea30-91e9-4421-9b38-48268d30680b",
@@ -185,36 +327,28 @@
       "dtype": "number",
       "desc": "output c"
     },
-    "structInfo": "JSON String"
+    "structInfo": "JSON String",
+    "testCases": [
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      },
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      }
+    ]
   },
   {
     "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
     "name": "p1",
     "desc": "d",
-    "state": 2,
-    "inpus": [
-      {
-        "name": "a",
-        "dtype": "number",
-        "desc": "input a"
-      },
-      {
-        "name": "b",
-        "dtype": "number",
-        "desc": "input b"
-      }
-    ],
-    "output": {
-      "name": "c",
-      "dtype": "number",
-      "desc": "output c"
-    },
-    "structInfo": "JSON String"
-  },
-  {
-    "id": "f7683537-c8a4-4c66-9f97-396d7ca8e8af",
-    "name": "problem1",
-    "desc": "add two numbers",
     "state": 1,
     "inpus": [
       {
@@ -233,16 +367,172 @@
       "dtype": "number",
       "desc": "output c"
     },
-    "structInfo": "JSON String"
+    "structInfo": "JSON String",
+    "testCases": [
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      },
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      }
+    ]
+  },
+  {
+    "id": "f7683537-c8a4-4c66-9f97-396d7ca8e8af",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "state": 0,
+    "inpus": [
+      {
+        "name": "a",
+        "dtype": "number",
+        "desc": "input a"
+      },
+      {
+        "name": "b",
+        "dtype": "number",
+        "desc": "input b"
+      }
+    ],
+    "output": {
+      "name": "c",
+      "dtype": "number",
+      "desc": "output c"
+    },
+    "structInfo": "JSON String",
+    "testCases": [
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      },
+      {
+        "inputs": {
+          "a": 1,
+          "b": "2"
+        },
+        "exepct": "2"
+      }
+    ]
+  }
+][
+  {
+    "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "structInfo": null,
+    "state": 0,
+    "rate": 0
+  },
+  {
+    "id": "8950ea30-91e9-4421-9b38-48268d30680b",
+    "name": "problem1",
+    "desc": "add two numbers",
+    "structInfo": null,
+    "state": 0,
+    "rate": 0
+  },
+  {
+    "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+    "name": "p1",
+    "desc": "d",
+    "structInfo": "JSON String",
+    "state": 0,
+    "rate": 0
   }
 ]
 ```
 
 
 
+#### 获取一个题目（管理员）
+
+**URL**: `v1/problem/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+0 为未发布
+
+1 为已发布
+
+```json
+{
+  "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "name": "p1",
+  "desc": "d",
+  "state": 1,
+  "inpus": [
+    {
+      "name": "a",
+      "dtype": "number",
+      "desc": "input a"
+    },
+    {
+      "name": "b",
+      "dtype": "number",
+      "desc": "input b"
+    }
+  ],
+  "output": {
+    "name": "c",
+    "dtype": "number",
+    "desc": "output c"
+  },
+  "structInfo": "JSON String",
+  "testCases": [
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    },
+    {
+      "inputs": {
+        "a": 1,
+        "b": "2"
+      },
+      "exepct": "2"
+    }
+  ]
+}
+```
+
+#### 
+
 ## SolutionController
 
-#### 执行题目
+#### 获得某个问题的解决方案
+
+**URL**: `v1/sol/eval/${id}`
+
+**Method**: `GET`
+
+**Response**
+
+```json
+{
+  "problemId": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
+  "userId": "test",
+  "state": 0,
+  "passRate": 0,
+  "structInfo": "JSON String"
+}
+```
+
+#### 执行解决方案
 
 **URL**: `v1/sol/eval/${id}`
 
@@ -258,7 +548,7 @@
 }
 ```
 
-#### 保存题目
+#### 保存解决方案
 
 **URL**: `v1/sol`
 

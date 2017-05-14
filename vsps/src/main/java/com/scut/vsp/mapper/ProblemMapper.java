@@ -45,4 +45,8 @@ public interface ProblemMapper {
 
     @Update("update " + PROBLEM_TABLE + " set name=#{name}, description=#{description}, state=#{state} where id=#{id}")
     Long modify(Problem problem);
+
+    @Select("select * from " + PROBLEM_TABLE + " where state != 0")
+    @ResultMap("Problem")
+    List<Problem> getAllPublishedProblem();
 }

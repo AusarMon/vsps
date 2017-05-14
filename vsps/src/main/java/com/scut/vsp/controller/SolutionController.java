@@ -32,6 +32,17 @@ public class SolutionController {
     @Autowired
     ProblemMapper problemMapper;
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    ResponseEntity<Solution> getSolution(@PathVariable String id, Principal principal) throws ItemNotFoundException {
+        String uid = PrincipalTransform.transform(principal).getUsername();
+        Solution solution = solutionMapper.get(id, uid);
+        if (solution == null) {
+            throw new ItemNotFoundException("Solution for [" + id);
+        }
+
+        return new ResponseEntity<>(solution, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     ResponseEntity<Solution> addSolution(@RequestBody SolutionRequest request, Principal principal) throws ItemNotFoundException {
         Problem problem = problemMapper.getProblem(request.getId());
@@ -50,7 +61,7 @@ public class SolutionController {
             solution.setProblemId(request.getId());
             solution.setUserId(username);
             solution.setPassRate(0.0);
-            solution.setState(0);
+            solution.setState(1);
         }
 
         solution.setStructInfo(request.getStructInfo());
@@ -75,7 +86,7 @@ public class SolutionController {
             throw new ItemNotFoundException("Problem [" + pid);
         }
         if (solution == null) {
-            throw new ItemNotFoundException("Solution [" + username);
+            throw new ItemNotFoundException("Solution for [" + pid);
         }
         if (problem.getState() != Problem.OEPN) {
             throw new IllegalStateException();

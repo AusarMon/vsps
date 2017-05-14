@@ -1,5 +1,7 @@
 package com.scut.vsp.request.model;
 
+import com.scut.vsp.code.evaluation.model.TestCase;
+
 /**
  * Created by HL on 10/05/2017.
  */
@@ -8,6 +10,7 @@ public class ModifyProblemRequest {
     String name;
     String description;
     int state;
+    TestCase[] testCases;
 
     public String getId() {
         return id;
@@ -39,5 +42,13 @@ public class ModifyProblemRequest {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public TestCase[] getTestCases() {
+        return testCases;
+    }
+
+    public void setTestCases(TestCase[] testCases) {
+        this.testCases = testCases;
     }
 }
