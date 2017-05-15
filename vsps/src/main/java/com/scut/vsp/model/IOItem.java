@@ -6,7 +6,7 @@ package com.scut.vsp.model;
 public class IOItem {
     String name;
     String dtype;
-    String description;
+    String desc;
 
     public String getName() {
         return name;
@@ -24,11 +24,11 @@ public class IOItem {
         this.dtype = dtype;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

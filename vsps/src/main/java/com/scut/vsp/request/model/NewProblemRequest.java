@@ -9,7 +9,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  */
 public class NewProblemRequest {
     String name;
-    String desc;
+    String description;
     @JsonProperty("inputs")
     IOItem[] inputs;
     IOItem output;
@@ -24,12 +24,12 @@ public class NewProblemRequest {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public IOItem[] getInputs() {

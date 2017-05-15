@@ -15,7 +15,6 @@ import com.scut.vsp.response.model.ProblemForUser;
 import com.scut.vsp.response.model.ProblemResponse;
 import com.scut.vsp.response.model.Success;
 import com.scut.vsp.utils.PrincipalTransform;
-import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,7 +69,7 @@ public class ProblemController {
         Problem problem = new Problem();
         problem.setId(UUID.randomUUID().toString());
         problem.setName(request.getName());
-        problem.setDescription(request.getDesc());
+        problem.setDescription(request.getDescription());
         problem.setState(0);
         problem.setInput(gson.toJson(request.getInputs()));
         problem.setOutput(gson.toJson(request.getOutput()));
