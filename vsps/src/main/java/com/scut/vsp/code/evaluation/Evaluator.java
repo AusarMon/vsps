@@ -28,6 +28,6 @@ public class Evaluator {
 
         Object result = engine.eval(script, context);
 
-        return result.equals(testCase.getExepct());
+        return result.equals(testCase.getExpect());
     }
 }

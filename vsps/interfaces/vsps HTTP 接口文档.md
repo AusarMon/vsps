@@ -35,14 +35,14 @@
   			"a": 1,
   			"b": "2"
   		},
-  		"exepct": "2"
+  		"expect": "2"
   	
   },{
   	"inputs": {
   		"a": 1,
   		"b": "2"
   	},
-  	"exepct": "2"}],
+  	"expect": "2"}],
   "structInfo": "JSON String"
 }
 ```
@@ -79,14 +79,14 @@
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     },
     {
       "inputs": {
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     }
   ]
 }
@@ -126,14 +126,14 @@
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     },
     {
       "inputs": {
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     }
   ]
 }
@@ -171,14 +171,14 @@
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     },
     {
       "inputs": {
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     }
   ]
 }
@@ -293,14 +293,14 @@
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       },
       {
         "inputs": {
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       }
     ]
   },
@@ -333,14 +333,14 @@
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       },
       {
         "inputs": {
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       }
     ]
   },
@@ -373,14 +373,14 @@
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       },
       {
         "inputs": {
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       }
     ]
   },
@@ -413,14 +413,14 @@
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       },
       {
         "inputs": {
           "a": 1,
           "b": "2"
         },
-        "exepct": "2"
+        "expect": "2"
       }
     ]
   }
@@ -496,14 +496,14 @@
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     },
     {
       "inputs": {
         "a": 1,
         "b": "2"
       },
-      "exepct": "2"
+      "expect": "2"
     }
   ]
 }
