@@ -63,7 +63,7 @@ public class ProblemController {
         }
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin", method = RequestMethod.PUT)
     ResponseEntity<ProblemResponse> addProblem(@RequestBody NewProblemRequest request, Principal principal) throws IllegalAccessException {
         roleCheck(principal);
 
@@ -82,7 +82,7 @@ public class ProblemController {
         return new ResponseEntity<>(new ProblemResponse(problem), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/{id}", method = RequestMethod.DELETE)
     ResponseEntity<Success> deleteProblem(@PathVariable String id, Principal principal) throws IllegalAccessException {
         roleCheck(principal);
 
@@ -142,7 +142,7 @@ public class ProblemController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
     ResponseEntity<ProblemResponse> modify(@RequestBody ModifyProblemRequest request, Principal principal) throws IllegalAccessException {
         roleCheck(principal);
 

@@ -9,7 +9,7 @@ import com.scut.vsp.model.Solution;
 public class ProblemForUser {
     String id;
     String name;
-    String desc;
+    String description;
     String structInfo;
     int state;
     double rate;
@@ -17,7 +17,7 @@ public class ProblemForUser {
     public ProblemForUser(Solution solution, Problem problem) {
         this.id = problem.getId();
         this.name = problem.getName();
-        this.desc = problem.getDescription();
+        this.description = problem.getDescription();
         this.structInfo = problem.getStructInfo();
         if (solution != null) {
             this.state = solution.getState();
@@ -44,12 +44,12 @@ public class ProblemForUser {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStructInfo() {

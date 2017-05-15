@@ -6,7 +6,7 @@
 
 #### 添加新题目
 
-**URL**: `v1/problem`
+**URL**: `v1/problem/admin`
 
 **Method**: `PUT`
 
@@ -15,20 +15,20 @@
 ```json
 {
   "name": "problem1",
-  "desc": "add two numbers",
+  "description": "add two numbers",
   "inputs": [{
     "name": "a",
     "dtype": "number",
-    "desc": "input a"
+    "description": "input a"
   }, {
     "name": "b",
     "dtype": "number",
-    "desc": "input b"
+    "description": "input b"
   }],
   "output": {
     "name": "c",
     "dtype": "number",
-    "desc": "output c"
+    "description": "output c"
   },
   "testCases": [{
   		"inputs": {
@@ -53,24 +53,24 @@
 {
   "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
   "name": "p1",
-  "desc": "d",
+  "description": "d",
   "state": 1,
   "inpus": [
     {
       "name": "a",
       "dtype": "number",
-      "desc": "input a"
+      "description": "input a"
     },
     {
       "name": "b",
       "dtype": "number",
-      "desc": "input b"
+      "description": "input b"
     }
   ],
   "output": {
     "name": "c",
     "dtype": "number",
-    "desc": "output c"
+    "description": "output c"
   },
   "structInfo": "JSON String",
   "testCases": [
@@ -94,7 +94,7 @@
 
 #### 删除一个题目
 
-**URL**: `v1/problem/${id}`
+**URL**: `v1/problem/admin/${id}`
 
 **Method**: `DELETE`
 
@@ -108,7 +108,7 @@
 
 ### 修改一个题目
 
-**URL**: `v1/problem`
+**URL**: `v1/problem/admin`
 
 **Method**: `POST`
 
@@ -116,8 +116,9 @@
 
 ```json
 {
+  "id": "1",
   "name": "problem1",
-  "desc": "add two numbers",
+  "description": "add two numbers",
   "state": 2,
   "testCases": [
     {
@@ -144,24 +145,24 @@
 {
   "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
   "name": "p1",
-  "desc": "d",
+  "description": "d",
   "state": 1,
   "inpus": [
     {
       "name": "a",
       "dtype": "number",
-      "desc": "input a"
+      "description": "input a"
     },
     {
       "name": "b",
       "dtype": "number",
-      "desc": "input b"
+      "description": "input b"
     }
   ],
   "output": {
     "name": "c",
     "dtype": "number",
-    "desc": "output c"
+    "description": "output c"
   },
   "structInfo": "JSON String",
   "testCases": [
@@ -183,8 +184,6 @@
 }
 ```
 
-#### 删除一个题目
-
 #### 获取一个题目（用户）
 
 **URL**: `v1/problem/${id}`
@@ -202,7 +201,7 @@
 {
   "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
   "name": "p1",
-  "desc": "d",
+  "description": "d",
   "structInfo": "JSON String",
   "state": 0,
   "rate": 0
@@ -227,7 +226,7 @@
   {
     "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "structInfo": null,
     "state": 0,
     "rate": 0
@@ -235,7 +234,7 @@
   {
     "id": "8950ea30-91e9-4421-9b38-48268d30680b",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "structInfo": null,
     "state": 0,
     "rate": 0
@@ -243,7 +242,7 @@
   {
     "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
     "name": "p1",
-    "desc": "d",
+    "description": "d",
     "structInfo": "JSON String",
     "state": 0,
     "rate": 0
@@ -268,24 +267,24 @@
   {
     "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "state": 1,
     "inpus": [
       {
         "name": "a",
         "dtype": "number",
-        "desc": "input a"
+        "description": "input a"
       },
       {
         "name": "b",
         "dtype": "number",
-        "desc": "input b"
+        "description": "input b"
       }
     ],
     "output": {
       "name": "c",
       "dtype": "number",
-      "desc": "output c"
+      "description": "output c"
     },
     "structInfo": "JSON String",
     "testCases": [
@@ -308,24 +307,24 @@
   {
     "id": "8950ea30-91e9-4421-9b38-48268d30680b",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "state": 1,
     "inpus": [
       {
         "name": "a",
         "dtype": "number",
-        "desc": "input a"
+        "description": "input a"
       },
       {
         "name": "b",
         "dtype": "number",
-        "desc": "input b"
+        "description": "input b"
       }
     ],
     "output": {
       "name": "c",
       "dtype": "number",
-      "desc": "output c"
+      "description": "output c"
     },
     "structInfo": "JSON String",
     "testCases": [
@@ -348,24 +347,24 @@
   {
     "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
     "name": "p1",
-    "desc": "d",
+    "description": "d",
     "state": 1,
     "inpus": [
       {
         "name": "a",
         "dtype": "number",
-        "desc": "input a"
+        "description": "input a"
       },
       {
         "name": "b",
         "dtype": "number",
-        "desc": "input b"
+        "description": "input b"
       }
     ],
     "output": {
       "name": "c",
       "dtype": "number",
-      "desc": "output c"
+      "description": "output c"
     },
     "structInfo": "JSON String",
     "testCases": [
@@ -388,24 +387,24 @@
   {
     "id": "f7683537-c8a4-4c66-9f97-396d7ca8e8af",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "state": 0,
     "inpus": [
       {
         "name": "a",
         "dtype": "number",
-        "desc": "input a"
+        "description": "input a"
       },
       {
         "name": "b",
         "dtype": "number",
-        "desc": "input b"
+        "description": "input b"
       }
     ],
     "output": {
       "name": "c",
       "dtype": "number",
-      "desc": "output c"
+      "description": "output c"
     },
     "structInfo": "JSON String",
     "testCases": [
@@ -429,7 +428,7 @@
   {
     "id": "45d1336a-a29c-4e07-a4dc-a8c871a03bd9",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "structInfo": null,
     "state": 0,
     "rate": 0
@@ -437,7 +436,7 @@
   {
     "id": "8950ea30-91e9-4421-9b38-48268d30680b",
     "name": "problem1",
-    "desc": "add two numbers",
+    "description": "add two numbers",
     "structInfo": null,
     "state": 0,
     "rate": 0
@@ -445,7 +444,7 @@
   {
     "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
     "name": "p1",
-    "desc": "d",
+    "description": "d",
     "structInfo": "JSON String",
     "state": 0,
     "rate": 0
@@ -457,7 +456,7 @@
 
 #### 获取一个题目（管理员）
 
-**URL**: `v1/problem/${id}`
+**URL**: `v1/problem/admin/${id}`
 
 **Method**: `GET`
 
@@ -471,24 +470,24 @@
 {
   "id": "f495aac3-c1d9-428d-9f36-02f60109e1ef",
   "name": "p1",
-  "desc": "d",
+  "description": "d",
   "state": 1,
   "inpus": [
     {
       "name": "a",
       "dtype": "number",
-      "desc": "input a"
+      "description": "input a"
     },
     {
       "name": "b",
       "dtype": "number",
-      "desc": "input b"
+      "description": "input b"
     }
   ],
   "output": {
     "name": "c",
     "dtype": "number",
-    "desc": "output c"
+    "description": "output c"
   },
   "structInfo": "JSON String",
   "testCases": [
@@ -516,7 +515,7 @@
 
 #### 获得某个问题的解决方案
 
-**URL**: `v1/sol/eval/${id}`
+**URL**: `v1/sol/${id}`
 
 **Method**: `GET`
 

@@ -13,7 +13,7 @@ import com.scut.vsp.model.Problem;
 public class ProblemResponse {
     String id;
     String name;
-    String desc;
+    String description;
     int state;
     IOItem[] inpus;
     IOItem output;
@@ -32,7 +32,7 @@ public class ProblemResponse {
     public ProblemResponse(Problem problem) {
         this.id = problem.getId();
         this.name = problem.getName();
-        this.desc = problem.getDescription();
+        this.description = problem.getDescription();
         this.state = problem.getState();
         this.structInfo = problem.getStructInfo();
         this.inpus = gson.fromJson(problem.getInput(), IOItem[].class);
@@ -56,12 +56,12 @@ public class ProblemResponse {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getState() {
