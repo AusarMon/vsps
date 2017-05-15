@@ -43,7 +43,7 @@ public interface ProblemMapper {
     @ResultMap("Problem")
     List<Problem> getAllProbelm();
 
-    @Update("update " + PROBLEM_TABLE + " set name=#{name}, description=#{description}, state=#{state} where id=#{id}")
+    @Update("update " + PROBLEM_TABLE + " set name=#{name}, description=#{description}, state=#{state}, testCases=#{testCases} where id=#{id}")
     Long modify(Problem problem);
 
     @Select("select * from " + PROBLEM_TABLE + " where state != 0")
