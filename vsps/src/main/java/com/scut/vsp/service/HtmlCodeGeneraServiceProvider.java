@@ -61,7 +61,7 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
     public String generateCode(String jsonString) {
        try {
             //modify html
-           System.out.println(jsonString);
+//           System.out.println(jsonString);
             Document html = ReadHtmlTemplate();
             Program program = parseJSON(jsonString);
             if (program.getName()!=null)
@@ -147,6 +147,12 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
 //        }
 //        codeBuilder.append(argument);
         codeBuilder.append(")\n{\n");
+        for (variableModule module :
+                variableModules) {
+            if (module.getClass() == VARIABLE.class){
+                codeBuilder.append(module.generateJavascript());
+            }
+        }
         if (!procedureModules.isEmpty()) {
             for (procedureModule module :
                     procedureModules) {
@@ -158,8 +164,9 @@ public class HtmlCodeGeneraServiceProvider implements CodeGeneraServiceProviderI
             if (module.getClass() == OUTPUT.class)
                 codeBuilder.append("return " + module.getName() + ";\n");
         }
-        codeBuilder.append("}");
-        return codeBuilder.toString();
+        codeBuilder.append("}\n");
+        codeBuilder.append("testFunc();");
+        return StringEscapeUtils.unescapeHtml4(codeBuilder.toString().replaceAll("\\\\",""));
     }
 
     public void setModuleBeansPath(String moduleBeansPath) {

@@ -7,6 +7,9 @@
         <!ELEMENT operand (#PCDATA)>
         ]>
 <operations>
+    <operation id="unary_assign">
+        <operand>0</operand>
+    </operation>
     <operation id="unary_plus">
         <symbol>+</symbol>
         <operand>0</operand>

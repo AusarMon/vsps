@@ -2,9 +2,12 @@ package com.scut.vsp.code.evaluation;
 
 
 import com.scut.vsp.code.evaluation.model.TestCase;
+import com.scut.vsp.model.IOItem;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import javax.script.*;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -14,20 +17,30 @@ import java.util.Set;
 @Component
 public class Evaluator {
 
+    private static Logger logger = Logger.getLogger(Evaluator.class);
+
     ScriptEngineManager manager = new ScriptEngineManager();
     private static final String ENGINE_NAME = "JavaScript";
 
-    public boolean evaluate(String script, TestCase testCase) throws ScriptException {
+    public boolean evaluate(String script, TestCase testCase, IOItem[] inputs, IOItem output) throws ScriptException {
         ScriptEngine engine = manager.getEngineByName(ENGINE_NAME);
 
         ScriptContext context = new SimpleScriptContext();
         Set<String> varNames = testCase.getInputs().keySet();
+        logger.info("inputs");
         for (String var : varNames) {
-            context.setAttribute(var, testCase.getInputs().get(var), ScriptContext.ENGINE_SCOPE);
+            IOItem item = IOItem.getItemByName(var, inputs);
+            Object object = IOItem.getObject(item, (String)testCase.getInputs().get(var));
+            logger.info(var + ": " + object);
+            context.setAttribute(var, object, ScriptContext.ENGINE_SCOPE);
         }
+        logger.info("expect");
+        Object expectObject = IOItem.getObject(output, (String) testCase.getExpect());
+        logger.info(expectObject);
 
         Object result = engine.eval(script, context);
+        logger.info("result: " + result);
 
-        return result.equals(testCase.getExpect());
+        return result.equals(expectObject);
     }
 }

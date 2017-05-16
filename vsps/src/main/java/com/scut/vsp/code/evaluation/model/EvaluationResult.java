@@ -5,9 +5,10 @@ package com.scut.vsp.code.evaluation.model;
  */
 public class EvaluationResult {
 
-    public static final int SUCCESS = 0;
-    public static final int FIAL = 1;
-    public static final int EXCEPTION = 2;
+    public static final int FRESH = 0;
+    public static final int PROCCESSING = 1;
+    public static final int ACCEPT = 2;
+    public static final int FAIL = 3;
 
     int state;
     double passRate;

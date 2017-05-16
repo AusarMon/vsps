@@ -28,18 +28,5 @@ public class TestCase {
         this.expect = expect;
     }
 
-    public static void main(String[] args) {
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.setPrettyPrinting().create();
-
-        TestCase testCase = new TestCase();
-        HashMap<String, Object> in = new HashMap<>();
-        in.put("a", 1);
-        in.put("b", "2");
-        testCase.setInputs(in);
-        testCase.setExpect("2");
-
-        System.out.println(gson.toJson(testCase));
-    }
 }

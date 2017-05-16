@@ -110,7 +110,6 @@ public class ProblemController {
         List<Problem> problems = problemMapper.getAllProbelm();
         List<ProblemResponse> res = new ArrayList<>();
         for (Problem p : problems) {
-            System.out.println(p.getStructInfo());
             res.add(new ProblemResponse(p));
         }
 
